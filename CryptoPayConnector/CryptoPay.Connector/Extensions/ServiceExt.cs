@@ -6,7 +6,7 @@ using System;
 
 namespace CryptoPay.Connector.Extensions
 {
-    public static class Injector
+    public static class ServiceExt
     {
         private const string _baseUrlProd = "https://pay.crypt.bot";
         private const string _baseUrlTest = "https://testnet-pay.crypt.bot";

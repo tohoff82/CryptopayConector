@@ -4,10 +4,10 @@ namespace CryptoPay.Connector.Models.Rest
 {
     public class GetBalanceResponse : ApiResponse
     {
-        public GetBalanceResult[] Result { get; set; }
+        public Balances[] Result { get; set; }
     }
 
-    public class GetBalanceResult
+    public class Balances
     {
         [JsonProperty("currency_code")]
         public string CurrencyCode { get; set; }

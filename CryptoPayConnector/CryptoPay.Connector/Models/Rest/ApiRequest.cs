@@ -5,7 +5,7 @@ using System.Text;
 
 namespace CryptoPay.Connector.Models.Rest
 {
-    public class ApiRequest
+    internal class ApiRequest
     {
         private readonly string _api = "/api";
 
