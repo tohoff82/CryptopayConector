@@ -1,5 +1,5 @@
 # CryptopayConnetor
-API wrapper for CryptoPay API https://telegra.ph/Crypto-Pay-API-11-25
+C# API wrapper for CryptoPay https://telegra.ph/Crypto-Pay-API-11-25
 
 How to use this CryptoPay API connector?
 
