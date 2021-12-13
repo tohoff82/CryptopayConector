@@ -8,13 +8,13 @@ namespace CryptoPay.Connector.Extensions
     internal static class StringExt
     {
         private const ushort _maxPayloadSize = 4096;
+        private const ushort _maxDescSymbols = 1024;
 
         public static bool IsOverSize(this string payload)
-        {
-            int size = Encoding.Unicode.GetByteCount(payload);
+            => Encoding.Unicode.GetByteCount(payload) > _maxPayloadSize;
 
-            return size > _maxPayloadSize;
-        }
+        public static bool IsOverSymbols(this string description)
+            => description.ToCharArray().Length > _maxDescSymbols;
 
         public static string ToBtnName(this PaidButtonType buttonType)
             => buttonType switch

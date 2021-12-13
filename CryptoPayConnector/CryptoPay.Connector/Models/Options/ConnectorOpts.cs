@@ -8,9 +8,9 @@
         public int Lifetime { get; set; } = 3;
 
         /// <summary>
-        /// Testnet or Mainnet flag
+        /// Testnet or Mainnet API url
         /// </summary>
-        public bool IsTestnet { get; set; } = true;
+        public string ApiUrl { get; set; }
 
         /// <summary>
         /// You App Token from Cryptobot

@@ -4,7 +4,10 @@ namespace CryptoPay.Connector.Models.Rest.RequestBodies
 {
     internal class CreateInvoiceBodyBase
     {
+        [JsonProperty("asset")]
         public string  Asset { get; set; }
+
+        [JsonProperty("amount")]
         public double Amount { get; set; }
 
         [JsonProperty("allow_comments")]
@@ -25,21 +28,25 @@ namespace CryptoPay.Connector.Models.Rest.RequestBodies
 
     internal class CreateInvoiceBodyWithPayload : CreateInvoiceBodyBase
     {
+        [JsonProperty("payload")]
         public string Payload { get; set; }
     }
 
     internal class CreateInvoiceBodyWithDescription : CreateInvoiceBodyWithPayload
     {
+        [JsonProperty("description")]
         public string Description { get; set; }
     }
 
     internal class CreateInvoiceBodyWithButtonAndPayload : CreateInvoiceBodyWithButton
     {
+        [JsonProperty("payload")]
         public string Payload { get; set; }
     }
 
     internal class CreateInvoiceBodyWithButtonAndDescription : CreateInvoiceBodyWithButtonAndPayload
     {
+        [JsonProperty("description")]
         public string Description { get; set; }
     }
 }

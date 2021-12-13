@@ -9,32 +9,32 @@ namespace CryptoPay.Connector.Models.Rest
 {
     public class CreateInvoiceResponse : ApiResponse
     {
-        public CreatedInvoice[] Result { get; set; }
+        public CreatedInvoice Result { get; set; }
     }
 
     public class CreateInvoiceResponseWithPaidButton : ApiResponse
     {
-        public CreatedInvoiceWithPaidButton[] Result { get; set; }
+        public CreatedInvoiceWithPaidButton Result { get; set; }
     }
 
     public class CreateInvoiceResponseWithPayload : ApiResponse
     {
-        public CreatedInvoiceWithPayload[] Result { get; set; }
+        public CreatedInvoiceWithPayload Result { get; set; }
     }
 
     public class CreateInvoiceResponseWithPayloadDescription : ApiResponse
     {
-        public CreatedInvoiceWithPayloadDescription[] Result { get; set; }
+        public CreatedInvoiceWithPayloadDescription Result { get; set; }
     }
 
     public class CreateInvoiceResponseWithPaidButtonAndPayload : ApiResponse
     {
-        public CreatedInvoiceWithPaidButtonAndPayload[] Result { get; set; }
+        public CreatedInvoiceWithPaidButtonAndPayload Result { get; set; }
     }
 
     public class CreateInvoiceResponseWithPaidButtonAndPayloadDescription : ApiResponse
     {
-        public CreatedInvoiceWithPaidButtonAndPayloadDescription[] Result { get; set; }
+        public CreatedInvoiceWithPaidButtonAndPayloadDescription Result { get; set; }
     }
 
     public class CreatedInvoice
@@ -42,11 +42,12 @@ namespace CryptoPay.Connector.Models.Rest
         [JsonProperty("invoice_id")]
         public int Id { get; set; }
 
-        internal string Status { get; set; }
+        [JsonProperty("status")]
+        internal string InvStatus { get; set; }
 
         [JsonIgnore]
-        public InvoiceStatus GetStatus
-            => Status.ToEnum<InvoiceStatus>();
+        public InvoiceStatus Status
+            => InvStatus.ToEnum<InvoiceStatus>();
 
         [JsonProperty("pay_url")]
         public string PayUrl { get; set; }

@@ -85,6 +85,9 @@ namespace CryptoPay.Connector.Models.Rest
             if (payload.IsOverSize()) throw new ArgumentOutOfRangeException(
                  nameof(payload), $"{nameof(payload)}, must not be over 4 kb");
 
+            if (description.IsOverSymbols()) throw new ArgumentOutOfRangeException(
+                 nameof(description), $"{nameof(description)}, must not be over 1024 symbols");
+
             Path.Append("/createInvoice");
 
             RequestBody = new CreateInvoiceBodyWithDescription
@@ -139,6 +142,9 @@ namespace CryptoPay.Connector.Models.Rest
 
             if (payload.IsOverSize()) throw new ArgumentOutOfRangeException(
                  nameof(payload), $"{nameof(payload)}, must not be over 4 kb");
+
+            if (description.IsOverSymbols()) throw new ArgumentOutOfRangeException(
+                 nameof(description), $"{nameof(description)}, must not be over 1024 symbols");
 
             Path.Append("/createInvoice");
 

@@ -8,19 +8,17 @@ namespace CryptoPay.Connector.Extensions
 {
     public static class ServiceExt
     {
-        private const string _baseUrlProd = "https://pay.crypt.bot";
-        private const string _baseUrlTest = "https://testnet-pay.crypt.bot";
+        private const string _authHeader = "Crypto-Pay-API-Token";
 
         public static void AddCryptopay(this IServiceCollection services, ConnectorOpts options)
         {
-            services.AddHttpClient<ApiContext>(opt =>
+            services.AddHttpClient<ApiContext>(httpClient =>
             {
-                if (options.IsTestnet)
-                     opt.BaseAddress = new Uri(_baseUrlTest);
-                else opt.BaseAddress = new Uri(_baseUrlProd);
+                httpClient.BaseAddress = new Uri(options.ApiUrl);
+                httpClient.DefaultRequestHeaders.Add(_authHeader, options.ApiToken);
             }).SetHandlerLifetime(TimeSpan.FromMinutes(options.Lifetime));
 
-            services.AddTransient<IPayConnector>(x => new PayConnector(x.GetService<ApiContext>(), options.ApiToken));
+            services.AddTransient<IPayConnector>(x => new PayConnector(x.GetService<ApiContext>()));
         }
     }
 }

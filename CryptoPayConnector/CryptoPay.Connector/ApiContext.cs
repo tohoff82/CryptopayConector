@@ -1,7 +1,6 @@
 ﻿using CryptoPay.Connector.Models.Rest;
 
 using Newtonsoft.Json;
-
 using System;
 using System.Net.Http;
 using System.Text;
@@ -11,8 +10,7 @@ namespace CryptoPay.Connector
 {
     public class ApiContext
     {
-        private const string _authHeader = "Crypto-Pay-API-Token";
-        private const string      _shema = "application/json";
+        private const string _shema = "application/json";
 
         private readonly HttpClient _httpClient;
 
@@ -21,10 +19,8 @@ namespace CryptoPay.Connector
             _httpClient = httpClient;
         }
 
-        internal async Task<T> HttpGetAsync<T>(ApiRequest request, string token)
+        internal async Task<T> HttpGetAsync<T>(ApiRequest request)
         {
-            _httpClient.DefaultRequestHeaders.Add(_authHeader, token);
-
             var resp = await _httpClient.GetAsync(request.Uri).ConfigureAwait(false);
 
             if (!resp.IsSuccessStatusCode) throw new HttpRequestException($"{resp.StatusCode} : {resp.ReasonPhrase}");
@@ -36,12 +32,10 @@ namespace CryptoPay.Connector
             return unpckdResp;
         }
 
-        internal async Task<T> HttpPostAsync<T>(ApiRequest request, string token)
+        internal async Task<T> HttpPostAsync<T>(ApiRequest request)
         {
-            _httpClient.DefaultRequestHeaders.Add(_authHeader, token);
-
-            var resp = await _httpClient.PostAsync(request.Uri,
-                new StringContent(request.JsonBody, Encoding.UTF8, _shema));
+            var resp = await _httpClient.PostAsync(request.Uri, new StringContent(request
+                .JsonBody, Encoding.UTF8, _shema)).ConfigureAwait(false);
 
             var unpckdResp = await UnpackAndGetResponse<T>(resp.Content);
 
