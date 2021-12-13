@@ -35,3 +35,5 @@ public class ConectorService
 var answer = await _conector.GetMeAsync();
 
 ```
+
+You can thank here <code> <b>--></b> https://send.monobank.com.ua/NNG8cy25 "</code> 
