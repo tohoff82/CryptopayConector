@@ -3,6 +3,8 @@ C# API wrapper for CryptoPay https://telegra.ph/Crypto-Pay-API-11-25
 
 How to use this CryptoPay API connector?
 
+Install <code>Install-Package CryptoPay.Conector -Version 0.0.1</code>
+
 1. Add CryptoPay to your dependency container
 
 ```
