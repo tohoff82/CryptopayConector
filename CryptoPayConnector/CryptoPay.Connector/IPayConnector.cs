@@ -18,5 +18,7 @@ namespace CryptoPay.Connector
         Task<CreateInvoiceResponseWithPayloadDescription> CreateInvoiceAsync(string asset, double amount, string payload, string description, bool allowComments = false, bool allowAnanymous = false);
         Task<CreateInvoiceResponseWithPaidButtonAndPayload> CreateInvoiceAsync(string asset, double amount, PaidButtonType btnType, string btnUrl, string payload, bool allowComments = false, bool allowAnanymous = false);
         Task<CreateInvoiceResponseWithPaidButtonAndPayloadDescription> CreateInvoiceAsync(string asset, double amount, PaidButtonType btnType, string btnUrl, string payload, string description, bool allowComments = false, bool allowAnanymous = false);
+
+        Task<GetInvoicesResponse> GetInvoicesAsync(string[] assets = null, int[] ids = null, InvoiceStatus status = InvoiceStatus.All, ushort offset = 0, ushort count = 100);
     }
 }

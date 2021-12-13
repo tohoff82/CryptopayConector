@@ -5,12 +5,14 @@
         ViewItem    = 1,
         OpenChannel = 2,
         OpenBot     = 3,
-        Callback    = 4
+        Callback    = 4,
+        None        = 5
     }
 
     public enum InvoiceStatus
     {
-        Active = 1,
-        Paid   = 2
+        All    = 1,
+        Active = 2,
+        Paid   = 3
     }
 }

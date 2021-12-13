@@ -38,6 +38,9 @@ namespace CryptoPay.Connector.Models.Rest
             if (string.IsNullOrEmpty(btnUrl)) throw new ArgumentNullException(
                 nameof(btnUrl), $"{nameof(btnUrl)}, must not be null or empty");
 
+            if (btnType == PaidButtonType.None) throw new ArgumentException(
+                nameof(btnType), $"{nameof(btnType)}, must not be None");
+
             Path.Append("/createInvoice");
 
             RequestBody = new CreateInvoiceBodyWithButton
@@ -115,6 +118,9 @@ namespace CryptoPay.Connector.Models.Rest
             if (payload.IsOverSize()) throw new ArgumentOutOfRangeException(
                  nameof(payload), $"{nameof(payload)}, must not be over 4 kb");
 
+            if (btnType == PaidButtonType.None) throw new ArgumentException(
+                nameof(btnType), $"{nameof(btnType)}, must not be None");
+
             Path.Append("/createInvoice");
 
             RequestBody = new CreateInvoiceBodyWithButtonAndPayload
@@ -145,6 +151,9 @@ namespace CryptoPay.Connector.Models.Rest
 
             if (description.IsOverSymbols()) throw new ArgumentOutOfRangeException(
                  nameof(description), $"{nameof(description)}, must not be over 1024 symbols");
+
+            if (btnType == PaidButtonType.None) throw new ArgumentException(
+                nameof(btnType), $"{nameof(btnType)}, must not be None");
 
             Path.Append("/createInvoice");
 

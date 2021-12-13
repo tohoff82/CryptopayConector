@@ -50,5 +50,8 @@ namespace CryptoPay.Connector
 
         public Task<CreateInvoiceResponseWithPaidButtonAndPayloadDescription> CreateInvoiceAsync(string asset, double amount, PaidButtonType btnType, string btnUrl, string payload, string description, bool allowComments = false, bool allowAnanymous = false)
             => _context.HttpPostAsync<CreateInvoiceResponseWithPaidButtonAndPayloadDescription>(new CreateInvoiceRequest(asset, amount, btnType, btnUrl, payload, description, allowComments, allowAnanymous));
+
+        public Task<GetInvoicesResponse> GetInvoicesAsync(string[] assets = null, int[] ids = null, InvoiceStatus status = InvoiceStatus.All, ushort offset = 0, ushort count = 100)
+            => _context.HttpGetAsync<GetInvoicesResponse>(new GetInvoicesRequest(assets, ids, status, offset, count));
     }
 }

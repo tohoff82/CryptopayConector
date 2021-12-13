@@ -5,10 +5,11 @@ using System.Text;
 
 namespace CryptoPay.Connector.Extensions
 {
-    internal static class StringExt
+    internal static class ValidateExt
     {
         private const ushort _maxPayloadSize = 4096;
         private const ushort _maxDescSymbols = 1024;
+        private const ushort   _maxCountSize = 1000;
 
         public static bool IsOverSize(this string payload)
             => Encoding.Unicode.GetByteCount(payload) > _maxPayloadSize;
@@ -23,10 +24,21 @@ namespace CryptoPay.Connector.Extensions
                 PaidButtonType.OpenChannel => "openChannel",
                     PaidButtonType.OpenBot => "openBot",
                    PaidButtonType.Callback => "callback",
-                                         _ => throw new ArgumentException("Unknown PaidButton type")
+                                         _ => string.Empty
+            };
+
+        public static string ToStatusName(this InvoiceStatus status)
+            => status switch
+            {
+                InvoiceStatus.Active => "active",
+                  InvoiceStatus.Paid => "paid",
+                                   _ => "all"
             };
 
         public static T ToEnum<T>(this string value)
             => (T)Enum.Parse(typeof(T), value, true);
+
+        public static bool IsOverCount(this ushort count)
+            => count > _maxCountSize;
     }
 }

@@ -73,7 +73,9 @@ namespace CryptoPay.Connector.Models.Rest
 
         [JsonIgnore]
         public PaidButtonType PaidButton
-            => PaidButtonName.ToEnum<PaidButtonType>();
+            => !string.IsNullOrEmpty(PaidButtonName)
+                ? PaidButtonName.ToEnum<PaidButtonType>()
+                : PaidButtonType.None;
 
         [JsonProperty("paid_btn_url")]
         public string PaidButtonUrl { get; set; }
