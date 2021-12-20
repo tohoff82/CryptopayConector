@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace CryptoPay.Connector
 {
-    public class PayConnector : IPayConnector
+    public class PayConector : IPayConector
     {
         private readonly ApiContext _context;
 
-        internal PayConnector(ApiContext context)
+        internal PayConector(ApiContext context)
         {
             _context = context;
         }
 
-        public PayConnector(HttpClient httpClient)
+        public PayConector(HttpClient httpClient)
         {
             _context = new ApiContext(httpClient);
         }

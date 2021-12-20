@@ -18,7 +18,7 @@ namespace CryptoPay.Connector.Extensions
                 httpClient.DefaultRequestHeaders.Add(_authHeader, options.ApiToken);
             }).SetHandlerLifetime(TimeSpan.FromMinutes(options.Lifetime));
 
-            services.AddTransient<IPayConnector>(x => new PayConnector(x.GetService<ApiContext>()));
+            services.AddTransient<IPayConector>(x => new PayConector(x.GetService<ApiContext>()));
         }
     }
 }

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace CryptoPay.Connector
 {
-    public interface IPayConnector
+    public interface IPayConector
     {
         Task<GetMeResponse> GetMeAsync();
         Task<GetBalanceResponse> GetBalanceAsync();
