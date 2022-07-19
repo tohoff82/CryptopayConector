@@ -43,6 +43,7 @@ var answer = await _conector.GetMeAsync();
 var client = new HttpClient
 {
     BaseAddress = new Uri("testNet or mainNet url here"),
+}
 
 client.DefaultRequestHeaders.Add("Crypto-Pay-API-Token", "you App Token here");
 ```
