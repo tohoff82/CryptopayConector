@@ -37,23 +37,21 @@ var answer = await _conector.GetMeAsync();
 
 ## 2 Use simple initialization
 
-2.1 Initialize HttpClient
+2.1 Initialize CryptopayCredentials
 
 ```
-var client = new HttpClient
-{
-    BaseAddress = new Uri("testNet or mainNet url here"),
-}
-
-client.DefaultRequestHeaders.Add("Crypto-Pay-API-Token", "you App Token here");
+var creds = new CryptopayCredentials(
+      apiUrl: "https://testnet-pay.crypt.bot/",
+    apiToken: "9999:ABpPkivT2jiuVywaJbSGjfXFozOjQZfO3ZL"
+);
 ```
 
 2.2 Create connector instance & call the required method
 
 ```
-IPayConector conector = new PayConector(client);
+using var cryptopay = Connector.GetIstance(new HttpClient(), creds);
 
-var answer = await conector.GetMeAsync();
+var answer = await cryptopay.GetMeAsync();
 ```
 
 ## You can thank here <code> <b>--></b> [Mono Bank donate](https://send.monobank.com.ua/NNG8cy25) "</code> or here <code> <b>--></b> [TON donate](https://t.me/CryptoBot?start=IVzvtl4RU4q8) "</code>
