@@ -36,11 +36,11 @@ internal class CreateInvoiceRequest : ApiRequest
 
         RequestBody = new
         {
-            asset           = asset.ToString(),
+            asset           = $"{asset}",
             amount          = amount,
             description     = description,
             hidden_message  = hiddenMessage,
-            paid_btn_name   = paidBtnName.ToString(),
+            paid_btn_name   = $"{paidBtnName}",
             paid_btn_url    = paidBtnUrl,
             payload         = payload,
             allow_comments  = allowComments,
