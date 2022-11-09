@@ -34,7 +34,7 @@ internal class TransferRequest : ApiRequest
         RequestBody = new
         {
             user_id         = userId,
-            asset           = asset.ToString(),
+            asset           = $"{asset}",
             amount          = amount,
             spend_id        = spendId,
             comment         = comment,
